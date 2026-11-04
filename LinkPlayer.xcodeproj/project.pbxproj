@@ -1,0 +1,100 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		111111111111111111111201 = {isa = PBXBuildFile; fileRef = 111111111111111111111101; };
+		111111111111111111111202 = {isa = PBXBuildFile; fileRef = 111111111111111111111102; };
+		111111111111111111111203 = {isa = PBXBuildFile; fileRef = 111111111111111111111103; };
+		111111111111111111111204 = {isa = PBXBuildFile; fileRef = 111111111111111111111104; };
+		111111111111111111111205 = {isa = PBXBuildFile; fileRef = 111111111111111111111105; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		111111111111111111111101 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPlayerApp.swift; sourceTree = "<group>"; };
+		111111111111111111111102 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		111111111111111111111103 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
+		111111111111111111111104 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VLCPlayerView.swift; sourceTree = "<group>"; };
+		111111111111111111111105 = {isa = PBXFileReference; lastKnownFileType = text; path = detector.js; sourceTree = "<group>"; };
+		111111111111111111111106 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		111111111111111111111107 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		111111111111111111111303 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (
+		); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		111111111111111111111501 = {isa = PBXGroup; children = (
+			111111111111111111111502,
+			111111111111111111111503,
+		); sourceTree = "<group>"; };
+		111111111111111111111502 = {isa = PBXGroup; children = (
+			111111111111111111111101,
+			111111111111111111111102,
+			111111111111111111111103,
+			111111111111111111111104,
+			111111111111111111111105,
+			111111111111111111111106,
+		); name = LinkPlayer; path = LinkPlayer; sourceTree = "<group>"; };
+		111111111111111111111503 = {isa = PBXGroup; children = (
+			111111111111111111111107,
+		); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		111111111111111111111401 = {isa = PBXNativeTarget; buildConfigurationList = 111111111111111111111602; buildPhases = (
+			111111111111111111111301,
+			111111111111111111111303,
+			111111111111111111111302,
+		); buildRules = (
+		); dependencies = (
+		); name = LinkPlayer; productName = LinkPlayer; productReference = 111111111111111111111107; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		111111111111111111111402 = {isa = PBXProject; attributes = { BuildIndependentTargetsInParallel = 1; LastUpgradeCheck = 1400; TargetAttributes = { 111111111111111111111401 = { CreatedOnToolsVersion = 14.0; }; }; }; buildConfigurationList = 111111111111111111111601; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = 111111111111111111111501; productRefGroup = 111111111111111111111503; projectDirPath = ""; projectRoot = ""; targets = (
+			111111111111111111111401,
+		); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		111111111111111111111302 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+			111111111111111111111205,
+		); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		111111111111111111111301 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+			111111111111111111111201,
+			111111111111111111111202,
+			111111111111111111111203,
+			111111111111111111111204,
+		); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		111111111111111111111701 = {isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 14.0; SWIFT_VERSION = 5.0; }; name = Debug; };
+		111111111111111111111702 = {isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 14.0; SWIFT_VERSION = 5.0; }; name = Release; };
+		111111111111111111111703 = {isa = XCBuildConfiguration; buildSettings = { CODE_SIGN_STYLE = Manual; INFOPLIST_FILE = LinkPlayer/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.linkplayer; PRODUCT_NAME = LinkPlayer; SWIFT_EMBED_LIBRARIES_WITH_SWIFT = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Debug; };
+		111111111111111111111704 = {isa = XCBuildConfiguration; buildSettings = { CODE_SIGN_STYLE = Manual; INFOPLIST_FILE = LinkPlayer/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 14.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.linkplayer; PRODUCT_NAME = LinkPlayer; SWIFT_EMBED_LIBRARIES_WITH_SWIFT = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		111111111111111111111601 = {isa = XCConfigurationList; buildConfigurations = (
+			111111111111111111111701,
+			111111111111111111111702,
+		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		111111111111111111111602 = {isa = XCConfigurationList; buildConfigurations = (
+			111111111111111111111703,
+			111111111111111111111704,
+		); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 111111111111111111111402;
+}
