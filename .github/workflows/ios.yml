@@ -1,0 +1,67 @@
+name: Build IPA
+
+# Manual run only: Actions tab -> Build IPA -> Run workflow.
+on:
+  workflow_dispatch:
+
+env:
+  # Change to "Apple Development" if your certificate is a development
+  # certificate instead of a distribution certificate.
+  CODE_SIGN_IDENTITY: "Apple Distribution"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "Using $XCODE"
+          sudo xcode-select -s "$XCODE/Contents/Developer"
+
+      - name: Install Pods (MobileVLCKit)
+        run: pod install
+
+      - name: Import signing certificate and profile
+        env:
+          CERT_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          PROFILE_BASE64: ${{ secrets.PROVISIONING_PROFILE_BASE64 }}
+        run: |
+          KEYCHAIN=build.keychain
+          security create-keychain -p "" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain
+          echo "$CERT_BASE64" | base64 --decode > cert.p12
+          security import cert.p12 -k "$KEYCHAIN" -P "$CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool: -s -k "" "$KEYCHAIN"
+          mkdir -p ~/Library/MobileDevice/"Provisioning Profiles"
+          echo "$PROFILE_BASE64" | base64 --decode > ~/Library/MobileDevice/"Provisioning Profiles"/profile.mobileprovision
+          rm -f cert.p12
+
+      - name: Archive
+        run: |
+          xcodebuild -workspace LinkPlayer.xcworkspace \
+            -scheme LinkPlayer \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/LinkPlayer.xcarchive \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="$CODE_SIGN_IDENTITY" \
+            clean archive
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/LinkPlayer.xcarchive \
+            -exportPath build \
+            -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: LinkPlayer-ipa
+          path: build/*.ipa
